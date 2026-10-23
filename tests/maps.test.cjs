@@ -1,0 +1,4 @@
+const {test}=require('node:test');const assert=require('node:assert/strict');const M=require('../dist/maps.js');
+test('GPS input preserves accuracy and sample timestamp',()=>{assert.deepEqual(M.normalizeFix({coords:{latitude:14.4,longitude:120.8,accuracy:15},timestamp:10000}),{latitude:14.4,longitude:120.8,accuracy:15,timestamp:10000})});
+test('invalid coordinates, accuracy, and timestamps are rejected',()=>{for(const x of [{latitude:91},{longitude:181},{accuracy:-1},{latitude:NaN},{timestamp:0},{longitude:'120.8'}])assert.throws(()=>M.normalizeFix({latitude:14.4,longitude:120.8,accuracy:10,timestamp:10000,...x}))});
+test('old and future fixes are not described as current',()=>{assert.equal(M.stale({timestamp:50000},100000),false);assert.equal(M.stale({timestamp:10000},100000),true);assert.equal(M.stale({timestamp:120000},100000),true)});
