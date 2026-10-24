@@ -1,13 +1,13 @@
-# 10Tacles Seafood Kitchen — workflow demo
+# 10Tacles shared operations demo
 
-Responsive buildless customer, kitchen and rider demo. Serve `dist` with any static HTTP server. Menu imagery comes from the restaurant's supplied local menu images. The six seafood test dishes and prices require confirmation before real use.
+Read THREE-PHONE-DEMO.md for phone links and a full test script. This private Sites app uses Vinext route handlers and D1 for shared sample orders, scoped to the signed-in owner account. All demo phones sign into the same owning ChatGPT account; roles are simulated, not production staff permissions. No real payments or GPS.
 
-Use the workspace buttons to test: customer checkout → simulated payment reference → kitchen verification → cooking/ready → rider assignment → pickup/position simulation → delivery. Standard orders may share a two-stop trip in one test zone. Priority delivery requires an exclusive trip. Submitted and verified payment cancellations enter reconciliation review.
+Editable files: site.html (page), public/ (browser scripts/styles/assets), app/api/demo/route.ts (authenticated API), lib/demo-service.ts (commands), lib/domain.mjs (server domain rules), db/schema.ts and drizzle/ (shared DB migration). dist/ is generated and ignored. The original domain logic is also in public/domain.js for browser menu/quote previews; the server independently validates all submitted commands and prices.
 
-Data is stored under `10tacles-demo-v1` in this browser's localStorage. Tabs of the same browser can receive storage updates. Different devices and browser profiles do not sync. The role switch is not authentication; all data is sample data. Real payment collection, uploads, secure roles, server storage, road routing, actual coverage and GPS are not connected. Demo rates and distances are unapproved examples. No cash-on-delivery option is offered.
+Browser storage holds only the local cart and delivery choices. Orders are fetched from the shared API. Version-checked database writes and request identifiers protect against concurrent overwrites and duplicate retries. Polling runs every 3 seconds while visible; network failure is shown and uncertain actions can be retried with the same identifier.
 
-Run `node --test tests/domain.test.cjs` for workflow checks, and `node --check dist/app.js` for script syntax. See `LAUNCH-PLAN.md` for the production pilot scope and dependencies.
+Use npm run dev for local preview with portable mock sign-in at /signin-with-chatgpt?return_to=/. Generate/apply D1 migrations following the Sites starter instructions. Build/publish through Sites helpers.
 
-The customer layout now opens directly to a compact Taglish menu. Demo workspaces are in the header's Demo tools dropdown. A bottom island tracks active orders and a separate bag shortcut remains visible while shopping. Checkout displays a short water-wave confirmation, with a reduced-motion alternative and a skip button.
+Checks: node --test tests/domain.test.cjs tests/maps.test.cjs tests/shared-service.test.mjs. The optional local-only integration test runs with DEMO_HTTP_TEST=1 using tests/shared-http.test.mjs; it resets only the local test board on 127.0.0.1.
 
-`dist/ordering.css` styles this ordering experience; `dist/experience.js` handles the islands and wave. `dist/maps.js` prepares a Google Maps viewer and an opt-in browser GPS adapter. Neither real map loads nor GPS collection are enabled. Read `GOOGLE-MAPS-SETUP.md` for API-key restrictions and the secure shared-backend requirements. Run `node --test tests/domain.test.cjs tests/maps.test.cjs` for all workflow and GPS-validation checks.
+See GOOGLE-MAPS-SETUP.md and LAUNCH-PLAN.md for deferred production integrations. Earlier browser-local descriptions in planning documents are historical; this release now shares orders online, but is still a private demo.

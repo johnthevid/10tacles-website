@@ -1,6 +1,6 @@
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
-const D=require('../dist/domain.js');
+const D=require('../lib/domain.mjs').default;
 const makeState=()=>({orders:[]});
 let seq=0;
 function create(s,overrides={}){return D.newOrder(s,{cart:[{id:'shrimp',qty:2}],zone:'near',mode:'standard',name:'Demo Customer',phone:'09000000000',address:'Demo address',...overrides},1000,'test-'+String(++seq).padStart(8,'0'))}
