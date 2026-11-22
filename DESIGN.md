@@ -47,3 +47,13 @@ payment; cooking still follows the server's payment-verification rules.
 
 Refined against desktop and 390px phone layouts. Physical phone sound/vibration,
 production authorization, GCash integration, and live GPS remain separate work.
+
+
+## Signature-squid hero (public homepage)
+
+The menu-only homepage is now a Persuade surface within the established brand:
+large purple product-led typography, the supplied signature-squid photography,
+and a direct menu anchor. English/Taglish hero copy follows the language selector.
+The menu remains below as a catalog. Bag and Add controls are hidden while ordering
+work is paused; the server-side menu-only gate continues blocking order APIs.
+The original restaurant artwork is displayed without modifying its image contents.
