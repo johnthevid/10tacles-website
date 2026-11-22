@@ -16,6 +16,7 @@ export default {
         let page = html.replaceAll('ChatGPT account', 'Cloudflare Access email')
           .replaceAll('/signin-with-chatgpt?return_to=%2F', '/');
         if (publicDemo) page = page
+          .replace('PRIVATE DEMO · ROLES ARE SIMULATED', 'PUBLIC DEMO · ROLES ARE SIMULATED')
           .replace('Private shared demo · same account on all phones · no real payments', 'PUBLIC DEMO · Sample details lang · Walang totoong bayad')
           .replace('Orders now sync online across phones signed into the SAME Cloudflare Access email.', 'Orders sync across all phones without signing in.')
           .replace('This is a private operations simulation, not separate production staff/customer accounts.', 'Anyone with this link can use Customer, Kitchen, and Rider and change demo orders.')
