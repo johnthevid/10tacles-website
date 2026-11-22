@@ -12,13 +12,14 @@ function renderDock(){
  if($('cartIsland'))$('cartIsland').onclick=()=>{renderBag();show('bagDialog')};
 }
 let waveTimer;
-function sendOrderWave(after){
+function confirmOrderReceived(after){
  const d=$('waveDialog');clearTimeout(waveTimer);let finished=false;
  const finish=()=>{if(finished)return;finished=true;clearTimeout(waveTimer);d.close();after()};
  $('waveContinue').onclick=finish;
  d.oncancel=e=>{e.preventDefault();finish()};
  show('waveDialog');
- waveTimer=setTimeout(finish,window.matchMedia('(prefers-reduced-motion: reduce)').matches?250:1900);
+ // Confirmation stays until acknowledged; no timed dismissal.
+ window.orderFeedback?.confirm();
 }
 function mapsCard(o){
  if(!['assigned','out_for_delivery'].includes(o.status))return '';

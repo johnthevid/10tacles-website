@@ -12,6 +12,7 @@ function applyShared(result){
  if(result.version<sharedVersion)return;
  if(result.version!==sharedVersion){
    const focus=document.activeElement,restore=focus&&['INPUT','TEXTAREA','SELECT'].includes(focus.tagName)&&focus.id?{id:focus.id,value:focus.value,checked:focus.checked}:null;
+   window.orderFeedback?.changes(state.orders,result.orders,sharedVersion>=0);
    state.orders=result.orders;sharedVersion=result.version;renderAll();
    if(restore){const el=document.getElementById(restore.id);if(el){el.value=restore.value;if(el.type==='checkbox')el.checked=restore.checked;el.focus()}}
  }
@@ -51,5 +52,5 @@ function startSharedDemo(){
  refreshShared();sharedPoll=setInterval(refreshShared,3000);
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshShared()});window.addEventListener('online',refreshShared);
 }
-function finishSharedCheckout(){state.cart=[];save();if($('checkoutDialog').open)$('checkoutDialog').close();sendOrderWave(()=>{renderCustomerOrders();show('ordersDialog')})}
+function finishSharedCheckout(){state.cart=[];save();if($('checkoutDialog').open)$('checkoutDialog').close();confirmOrderReceived(()=>{renderCustomerOrders();show('ordersDialog')})}
 async function retrySharedFromUI(){const wasCreate=sharedPending?.action==='create';try{const result=await retryShared();if(result&&wasCreate)finishSharedCheckout();else if(sharedOnline)toast('Connected. You can continue.')}catch(e){toast(e.message)}}

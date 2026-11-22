@@ -1,3 +1,15 @@
+# Current standalone Cloudflare demo
+
+Start with [START-HERE.md](START-HERE.md) and [cloudflare/STAGING.md](cloudflare/STAGING.md).
+The current deployment is a public sample-data simulation at
+https://10tacles-staging.johndavidceasar.workers.dev.
+It uses the standalone Worker configuration, not the framework build described below.
+
+The following section documents the earlier managed Sites implementation retained
+in this source tree.
+
+---
+
 # 10Tacles shared operations demo
 
 Read THREE-PHONE-DEMO.md for phone links and a full test script. This private Sites app uses Vinext route handlers and D1 for shared sample orders, scoped to the signed-in owner account. All demo phones sign into the same owning ChatGPT account; roles are simulated, not production staff permissions. No real payments or GPS.
