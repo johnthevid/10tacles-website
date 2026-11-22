@@ -43,6 +43,11 @@ async function retryShared(){
 }
 function startSharedDemo(){
  state.orders=[];renderAll();
+ if(document.body.dataset.launchState==='menu-only'){
+   setRole('customer');sharedStatus('Online ordering opens soon','prelaunch');
+   $('syncStatus').querySelector('button').hidden=true;
+   document.body.classList.remove('shared-offline');return;
+ }
  const params=new URLSearchParams(location.search),requestedRole=params.get('role');
  if(['customer','staff','rider'].includes(requestedRole))setRole(requestedRole);
  const selectedRider=params.get('rider');if(D.RIDERS.some(r=>r.id===selectedRider))$('riderSelect').value=selectedRider;

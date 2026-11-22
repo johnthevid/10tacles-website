@@ -1,3 +1,18 @@
+# Current deployment: public menu only
+
+`LAUNCH_MODE=menu-only` is enabled in `cloudflare/wrangler.staging.jsonc`.
+Visitors can browse dishes and build a local bag. Checkout, payment submission,
+order reads/writes, role shortcuts, and staff/rider screens are unavailable.
+Existing database records are retained but are not returned to public visitors.
+
+The backend rejects all `/api/` requests with HTTP 503 while this mode is active.
+Do not remove menu-only mode for a public launch until staff authorization,
+private customer tracking, payment verification, and real menu/service details
+are implemented and verified. Removing customer-facing labels does not complete
+those integrations. The older testing instructions below describe retained code.
+
+---
+
 # 10Tacles - updated source code
 
 This package contains the current public Cloudflare demo, including the whole-card

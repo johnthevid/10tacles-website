@@ -1,6 +1,7 @@
 import html from '../site.html';
 import { authenticate, AccessError } from './access.mjs';
 import { demoApi } from './demo-api';
+import { isMenuOnly, closedOrderingResponse, menuOnlyPage } from './launch-state.mjs';
 
 export default {
   async fetch(request: Request, env: any) {
@@ -9,6 +10,7 @@ export default {
       const publicDemo = env.PUBLIC_DEMO === 'true';
       const owner = publicDemo ? 'public-demo-v1' : await authenticate(request, env);
       const url = new URL(request.url);
+      if (isMenuOnly(env) && url.pathname.startsWith('/api/')) return closedOrderingResponse();
       if (url.pathname === '/api/demo') return demoApi(request, env.DB, owner);
       if (url.pathname === '/signin-with-chatgpt') return Response.redirect(`${url.origin}/`, 303);
       if (!['GET', 'HEAD'].includes(request.method)) return new Response('Method not allowed', { status: 405 });
@@ -23,6 +25,7 @@ export default {
           .replace('Shared backend is active for this private demo.', 'Everyone shares this public demo board.')
           .replace('Role buttons simulate operations within your own account.', 'All roles are open for testing. Sample details only.')
           .replace('Sign in with the same Cloudflare Access email on all phones. Different accounts have different demo boards.', 'No login needed. All devices share the same test orders. Do not enter real names, addresses, phone numbers, or payment details.');
+        if (isMenuOnly(env)) page = menuOnlyPage(page);
         return new Response(request.method === 'HEAD' ? null : page, { headers: {
           'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store',
           'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin'

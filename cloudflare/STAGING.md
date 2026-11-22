@@ -1,3 +1,16 @@
+# Current release: menu only
+
+`LAUNCH_MODE=menu-only` takes precedence over the previous public simulation.
+The menu remains public. All order APIs are closed; no existing board is exposed.
+Use `tests/launch-state.test.mjs` to check the release gate. Old role URLs resolve
+to the customer menu. Database records remain unchanged.
+
+Historical staging setup follows. Do not reopen it publicly as a production order
+system without implementing customer isolation, staff/rider permissions, real
+payment verification, and confirmed menu/service-area/rate information.
+
+---
+
 # Standalone Cloudflare demo
 
 ## Current mode: public simulation

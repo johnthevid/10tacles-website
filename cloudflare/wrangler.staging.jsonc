@@ -15,6 +15,7 @@
   },
   "rules": [{ "type": "Text", "globs": ["**/*.html"], "fallthrough": true }],
   "vars": {
+    "LAUNCH_MODE": "menu-only",
     "PUBLIC_DEMO": "true",
     "ACCESS_TEAM_DOMAIN": "johnthevid.cloudflareaccess.com",
     "ACCESS_AUD": "605898e653a619fc0c3dda8d8ec1a78f567f615785e9cd314a5b6d978f0727d4",
