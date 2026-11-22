@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded',()=>{
   document.querySelector('#syncStatus span').textContent=en?'Online ordering opens soon':'Online ordering · coming soon';
   const title=document.getElementById('signature-title');
   if(title){
-   title.replaceChildren(document.createTextNode('Big crunch.'),document.createElement('br'));
-   const accent=document.createElement('span');accent.textContent=en?'Big flavor.':'Big sarap.';title.append(accent);
+   title.replaceChildren(document.createTextNode('Seafood'),document.createElement('br'));
+   const accent=document.createElement('span');accent.textContent='Sarap';title.append(accent);
    document.querySelector('.signature-description').textContent=en?'Meet 10Tacles, our signature deep-fried squid. Made for your seafood cravings.':'Meet 10Tacles, our signature deep-fried squid. Para sa seafood cravings mo.';
    const cta=document.querySelector('.signature-cta');cta.firstChild.textContent=en?'Explore the menu ':'Tingnan ang menu ';
   }

@@ -22,5 +22,8 @@ test('menu page removes banner and role instructions and loads launch controls f
   assert.ok(!html.includes('One kitchen. Three views.'));
   assert.ok(!html.includes('delivery demo for Tanza'));
   assert.ok(html.includes('Online ordering opens soon.'));
+  assert.ok(html.includes('Seafood<br><span>Sarap</span>'));
+  assert.ok(html.includes('assets/signature-squid-cutout.webp'));
+  assert.ok(html.includes('href="brand.css"'));
   assert.ok(html.indexOf('src="launch.js"') < html.indexOf('src="app.js"'));
 });
