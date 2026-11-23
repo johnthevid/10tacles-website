@@ -1,0 +1,14 @@
+// Database administration only. This is not a Worker deployment configuration.
+// Keep the managed Site's database and other Cloudflare projects separate.
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "account_id": "e10eecc148c8ccc7a82cecd6c9a58fc6",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "10tacles-staging",
+      "database_id": "5b575b28-4eed-4680-b442-96dbf0c5f79f",
+      "migrations_dir": "../drizzle"
+    }
+  ]
+}
