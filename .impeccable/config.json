@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "site.html"
+        ],
+        "createdAt": "2026-11-23T09:49:39.220Z",
+        "reason": "Claude triage: the file-level scan could not load public/home.css (resolved the wrong path), so every role read as 16px; the same rule was clean when detect ran on the served page, and the type steps are 17px body / 30–84px headings / 82–150px display"
+      }
+    ]
+  }
+}

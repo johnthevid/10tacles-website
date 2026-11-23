@@ -1,0 +1,55 @@
+{
+  "source": "10TACLES Seafood House — Menu Masterlist & Promos, Menu tab (revision 22, 2026-11-23). Prices copied exactly; do not edit here without updating the masterlist.",
+  "signature": {
+    "name": "10TACLES",
+    "description": "Deep fried squid, crispy hanggang tentacles.",
+    "sizes": [
+      { "size": "Regular", "serves": "Good for 1", "price": 150 },
+      { "size": "Omega", "serves": "Good for 2", "price": 230 },
+      { "size": "Giga", "serves": "Good for 4", "price": 350 },
+      { "size": "Giant", "serves": "Good for all", "price": 400 }
+    ]
+  },
+  "categories": [
+    { "id": "platters", "label": "Seafood platters", "items": [
+      ["Cajun Seafood", "Bundle", 999], ["Seafood Platter", "Bundle", 420] ] },
+    { "id": "specials", "label": "Seafood specials", "items": [
+      ["Buttered Clams", "", 220], ["Sweet & Sour Fish Fillet", "", 280], ["Buttered Shrimp", "", 370] ] },
+    { "id": "appetizers", "label": "Appetizers", "items": [
+      ["Crispy Calamares", "", 195], ["Chicken Tender", "", 280], ["Fish n' Chips", "", 280], ["Ebi Fry", "", 280],
+      ["Fish Lumpia", "6 pcs", 100], ["Buttered Shrimp & Tahong", "", 370] ] },
+    { "id": "sizzling", "label": "Sizzling", "items": [
+      ["Sizzling Sisig Squid", "", 200], ["Sizzling Tofu", "", 150] ] },
+    { "id": "grilled", "label": "Grilled", "items": [
+      ["Grilled Pusit", "Meal", 159], ["Grilled Chicken Petcho", "À la carte", 120], ["Grilled Chicken Petcho", "Meal", 169],
+      ["Grilled Tilapia", "", 140], ["Grilled Bangus", "À la carte", 165], ["Grilled Bangus", "Meal", 190],
+      ["Grilled Pork Liempo", "À la carte", 139], ["Grilled Pork Liempo", "Meal", 199], ["BBQ Pork", "3 sticks", 100],
+      ["Grilled Hotdog", "3 sticks", 85], ["Chicken Isol", "3 sticks", 75] ] },
+    { "id": "whole-fish", "label": "Whole fish", "items": [
+      ["Fried Pompano", "", 280], ["Fried Tilapia", "", 150], ["Fried Bangus", "", 189] ] },
+    { "id": "soups", "label": "Seafood soups", "items": [
+      ["Tuna Sinigang", "", 350], ["Pompano Sinigang", "", 350], ["Salmon Belly Sinigang", "", 350], ["Shrimp Sinigang", "", 350] ] },
+    { "id": "seafood-veggies", "label": "Seafood & veggies", "items": [
+      ["Seafood Chopsuey", "", 220], ["Seafood Bihon", "", 200] ] },
+    { "id": "above-the-sea", "label": "Above the sea", "items": [
+      ["Sweet & Sour Chicken Fillet", "", 280], ["Beef Broccoli", "", 330], ["Balbacua", "Balat", 79],
+      ["Balbacua", "Balat Combo", 150], ["Balbacua", "Special", 249], ["Nilagang Bulalo", "", 350], ["Bagnet Kare-Kare", "", 380] ] },
+    { "id": "pasta", "label": "Pasta", "items": [
+      ["Aglio-Olio Pasta", "", 210], ["Bacon Mushroom Pasta", "", 210], ["Creamy Seafood Pasta", "", 210] ] },
+    { "id": "rice", "label": "Rice", "items": [
+      ["Chowfan Fried Rice", "", 160], ["Veggie Fried Rice", "", 160], ["Seafood Fried Rice", "", 200], ["Plain Rice", "Solo", 20] ] },
+    { "id": "snack-combos", "label": "Snack combos", "items": [
+      ["Siopao + Cucumber Drink", "Combo", 80], ["Gyoza + Cucumber Drink", "Combo", 80], ["Pork Siomai + Cucumber Drink", "5 pcs + drink", 70] ] },
+    { "id": "snacks", "label": "Snacks", "items": [
+      ["Jumbo Siopao", "Bola-bola or Asado", 45], ["Siomai (Pork or Chicken)", "5 pcs", 35], ["Gyoza", "5 pcs", 45] ] },
+    { "id": "smoothies", "label": "Smoothies", "items": [
+      ["Choco Smoothie", "", 130], ["Mango Banana Smoothie", "", 130], ["Mango Smoothie", "", 130],
+      ["Strawberry Smoothie", "", 130], ["Watermelon Smoothie", "", 130], ["Avocado Smoothie", "", 130] ] },
+    { "id": "dessert", "label": "Dessert", "items": [
+      ["Leche Flan", "", 160] ] },
+    { "id": "drinks", "label": "Drinks", "items": [
+      ["Four Seasons", "Canned juice", 65], ["Pineapple Juice", "Canned juice", 65], ["Iced Tea", "Pitcher", 80],
+      ["Shirley Temple", "With cherry", 65], ["Cucumber Lemonade", "Glass", 65], ["Coke", "1.5L", 95],
+      ["Coke", "Sakto", 25], ["Bottled Water", "", 20] ] }
+  ]
+}

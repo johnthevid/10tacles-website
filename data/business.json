@@ -1,0 +1,15 @@
+{
+  "_note": "Only confirmed facts go here. Leave a field null until the owner confirms it; the page hides or softens anything null. Run `node scripts/build-home.mjs` after editing.",
+  "name": "10TACLES Seafood House",
+  "branch": "Tanza",
+  "locality": "Tanza, Cavite",
+  "openingDate": "2026-12-08",
+  "openingLabel": "December 8, 2026",
+  "streetAddress": null,
+  "mapUrl": null,
+  "hours": null,
+  "phone": null,
+  "facebookUrl": null,
+  "grabFoodUrl": null,
+  "foodpandaUrl": null
+}

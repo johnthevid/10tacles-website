@@ -1,3 +1,10 @@
+# Current deployment: Tanza launch homepage (menu only)
+
+The homepage (`site.html`) is the public launch page for 10TACLES Seafood House Tanza.
+Menu prices live in `data/menu.json` and business details in `data/business.json`; after
+editing either, run `node scripts/build-home.mjs`, then deploy with Wrangler as below.
+See DESIGN.md › "Tanza launch homepage" for the design system and open items.
+
 # Current deployment: public menu only
 
 `LAUNCH_MODE=menu-only` is enabled in `cloudflare/wrangler.staging.jsonc`.

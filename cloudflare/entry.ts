@@ -1,7 +1,7 @@
 import html from '../site.html';
 import { authenticate, AccessError } from './access.mjs';
 import { demoApi } from './demo-api';
-import { isMenuOnly, closedOrderingResponse, menuOnlyPage } from './launch-state.mjs';
+import { isMenuOnly, closedOrderingResponse } from './launch-state.mjs';
 
 export default {
   async fetch(request: Request, env: any) {
@@ -14,21 +14,11 @@ export default {
       if (url.pathname === '/api/demo') return demoApi(request, env.DB, owner);
       if (url.pathname === '/signin-with-chatgpt') return Response.redirect(`${url.origin}/`, 303);
       if (!['GET', 'HEAD'].includes(request.method)) return new Response('Method not allowed', { status: 405 });
-      if (url.pathname === '/') {
-        let page = html.replaceAll('ChatGPT account', 'Cloudflare Access email')
-          .replaceAll('/signin-with-chatgpt?return_to=%2F', '/');
-        if (publicDemo) page = page
-          .replace('PRIVATE DEMO · ROLES ARE SIMULATED', 'PUBLIC DEMO · ROLES ARE SIMULATED')
-          .replace('Private shared demo · same account on all phones · no real payments', 'PUBLIC DEMO · Sample details lang · Walang totoong bayad')
-          .replace('Orders now sync online across phones signed into the SAME Cloudflare Access email.', 'Orders sync across all phones without signing in.')
-          .replace('This is a private operations simulation, not separate production staff/customer accounts.', 'Anyone with this link can use Customer, Kitchen, and Rider and change demo orders.')
-          .replace('Shared backend is active for this private demo.', 'Everyone shares this public demo board.')
-          .replace('Role buttons simulate operations within your own account.', 'All roles are open for testing. Sample details only.')
-          .replace('Sign in with the same Cloudflare Access email on all phones. Different accounts have different demo boards.', 'No login needed. All devices share the same test orders. Do not enter real names, addresses, phone numbers, or payment details.');
-        if (isMenuOnly(env)) page = menuOnlyPage(page);
-        return new Response(request.method === 'HEAD' ? null : page, { headers: {
-          'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store',
-          'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin'
+      if (url.pathname === '/' || url.pathname === '/index.html') {
+        // The public homepage is a static launch page; ordering stays closed (menu-only).
+        return new Response(request.method === 'HEAD' ? null : html, { headers: {
+          'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'public, max-age=300',
+          'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'strict-origin-when-cross-origin'
         } });
       }
       const asset = await env.ASSETS.fetch(request);
@@ -38,7 +28,9 @@ export default {
         headers.set('Cache-Control', 'no-store');
         return new Response((await asset.text()).replaceAll('ChatGPT account', 'Cloudflare Access email'), { headers });
       }
-      const headers = new Headers(asset.headers); headers.set('Cache-Control', 'private, no-store');
+      const headers = new Headers(asset.headers);
+      const longLived = /^\/(assets|fonts)\//.test(url.pathname);
+      headers.set('Cache-Control', longLived ? 'public, max-age=604800' : 'public, max-age=300');
       return new Response(asset.body, { status: asset.status, headers });
     } catch (e) {
       const status = e instanceof AccessError ? e.status : 503;
