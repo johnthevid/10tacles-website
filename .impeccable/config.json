@@ -1,0 +1,44 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "ai-color-palette",
+        "value": "*",
+        "files": [
+          "site/index.html"
+        ],
+        "createdAt": "2026-11-23T06:21:42.102Z",
+        "reason": "Brand-mandated: 10TACLES Brand Design System (user asked to build the site from it) specifies Squid Purple/Deep Ink and Paper #FAFAF4 ground"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "site/index.html"
+        ],
+        "createdAt": "2026-11-23T06:21:42.108Z",
+        "reason": "Brand-mandated: 10TACLES Brand Design System (user asked to build the site from it) specifies Squid Purple/Deep Ink and Paper #FAFAF4 ground"
+      },
+      {
+        "rule": "ai-color-palette",
+        "value": "*",
+        "files": [
+          "site/404.html"
+        ],
+        "createdAt": "2026-11-23T06:21:42.113Z",
+        "reason": "Brand-mandated: 10TACLES Brand Design System (user asked to build the site from it) specifies Squid Purple/Deep Ink and Paper #FAFAF4 ground"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "site/404.html"
+        ],
+        "createdAt": "2026-11-23T06:21:42.119Z",
+        "reason": "Brand-mandated: 10TACLES Brand Design System (user asked to build the site from it) specifies Squid Purple/Deep Ink and Paper #FAFAF4 ground"
+      }
+    ]
+  }
+}
