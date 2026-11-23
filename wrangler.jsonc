@@ -1,0 +1,18 @@
+// Public launch site, deployed by Cloudflare Workers Builds from the main branch.
+// Static only: no Worker code, no database. Ordering stays off.
+// The old staging app keeps its own config in cloudflare/wrangler.staging.jsonc.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "10tacles-website",
+  "compatibility_date": "2026-05-15",
+  "build": {
+    "command": "node scripts/build-site.mjs"
+  },
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none"
+  },
+  "workers_dev": true,
+  "preview_urls": true
+}

@@ -1,8 +1,14 @@
 # Current deployment: Tanza launch homepage (menu only)
 
 The homepage (`site.html`) is the public launch page for 10TACLES Seafood House Tanza.
-Menu prices live in `data/menu.json` and business details in `data/business.json`; after
-editing either, run `node scripts/build-home.mjs`, then deploy with Wrangler as below.
+Menu prices live in `data/menu.json` and business details in `data/business.json`.
+
+**Hosting:** the repo is connected to the Cloudflare Worker `10tacles-website` (Workers Builds).
+Every push to `main` builds and deploys automatically: Cloudflare runs `npx wrangler deploy`,
+which reads the root `wrangler.jsonc`, runs `node scripts/build-site.mjs` (renders the menu,
+then copies only the homepage files into `dist/`) and uploads `dist/` as static assets.
+Local check: `npm run build`, then `npx wrangler dev`. The old staging app still deploys
+separately with `cloudflare/wrangler.staging.jsonc`.
 See DESIGN.md › "Tanza launch homepage" for the design system and open items.
 
 # Current deployment: public menu only
