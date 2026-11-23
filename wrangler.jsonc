@@ -1,0 +1,16 @@
+// Cloudflare hosting for the 10TACLES website (static files in ./site).
+// "name" matches the existing Worker, so a deploy replaces the old ordering demo at
+// https://10tacles-staging.johndavidceasar.workers.dev with this site.
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "10tacles-staging",
+  "account_id": "e10eecc148c8ccc7a82cecd6c9a58fc6",
+  "compatibility_date": "2026-05-15",
+  "workers_dev": true,
+  "preview_urls": false,
+  "assets": {
+    "directory": "./site",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  }
+}

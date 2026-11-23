@@ -1,25 +1,54 @@
-# Current standalone Cloudflare demo
+# 10TACLES Seafood House website
 
-Start with [START-HERE.md](START-HERE.md) and [cloudflare/STAGING.md](cloudflare/STAGING.md).
-The current deployment is a public sample-data simulation at
-https://10tacles-staging.johndavidceasar.workers.dev.
-It uses the standalone Worker configuration, not the framework build described below.
+A fast, static website for 10TACLES Seafood House Dasma, built from the
+**10TACLES Brand Design System** (see `DESIGN.md`) and hosted on Cloudflare.
 
-The following section documents the earlier managed Sites implementation retained
-in this source tree.
+Live address after deploy: https://10tacles-staging.johndavidceasar.workers.dev
 
----
+## What's here
 
-# 10Tacles shared operations demo
+| Path | What it is |
+| --- | --- |
+| `site/` | The whole website, served as-is. `index.html` (home + full menu + visit), `404.html`, `styles.css`, `assets/`, `fonts/`. |
+| `data/menu.json` | The menu: every item, size and price, copied from the **Menu Masterlist** (sheet "Menu"). |
+| `scripts/build-menu.mjs` | Writes `data/menu.json` into `site/index.html`. |
+| `wrangler.jsonc` | Cloudflare hosting config. |
+| `.github/workflows/deploy.yml` | Publishes the site whenever `main` changes. |
 
-Read THREE-PHONE-DEMO.md for phone links and a full test script. This private Sites app uses Vinext route handlers and D1 for shared sample orders, scoped to the signed-in owner account. All demo phones sign into the same owning ChatGPT account; roles are simulated, not production staff permissions. No real payments or GPS.
+## Change a price or add a dish
 
-Editable files: site.html (page), public/ (browser scripts/styles/assets), app/api/demo/route.ts (authenticated API), lib/demo-service.ts (commands), lib/domain.mjs (server domain rules), db/schema.ts and drizzle/ (shared DB migration). dist/ is generated and ignored. The original domain logic is also in public/domain.js for browser menu/quote previews; the server independently validates all submitted commands and prices.
+1. Edit `data/menu.json` (or ask Claude to re-copy it from the Menu Masterlist).
+2. Run:
+   ```bash
+   npm run menu
+   ```
+3. Commit and push. The deploy workflow publishes it.
 
-Browser storage holds only the local cart and delivery choices. Orders are fetched from the shared API. Version-checked database writes and request identifiers protect against concurrent overwrites and duplicate retries. Polling runs every 3 seconds while visible; network failure is shown and uncertain actions can be retried with the same identifier.
+A dish only gets a photo card if it has an entry under `photos` in `data/menu.json`;
+otherwise it is listed on a menu board. A category needs a slot in `order`.
 
-Use npm run dev for local preview with portable mock sign-in at /signin-with-chatgpt?return_to=/. Generate/apply D1 migrations following the Sites starter instructions. Build/publish through Sites helpers.
+## Preview locally
 
-Checks: node --test tests/domain.test.cjs tests/maps.test.cjs tests/shared-service.test.mjs. The optional local-only integration test runs with DEMO_HTTP_TEST=1 using tests/shared-http.test.mjs; it resets only the local test board on 127.0.0.1.
+```bash
+npm install
+npm run dev
+```
 
-See GOOGLE-MAPS-SETUP.md and LAUNCH-PLAN.md for deferred production integrations. Earlier browser-local descriptions in planning documents are historical; this release now shares orders online, but is still a private demo.
+Then open http://localhost:8787.
+
+## Deploy
+
+**Automatic:** add a repository secret `CLOUDFLARE_API_TOKEN` (a Cloudflare API token with
+the *Edit Cloudflare Workers* template) under GitHub → Settings → Secrets and variables →
+Actions. Every push to `main` then deploys.
+
+**Manual, from your computer:**
+
+```bash
+npx wrangler login
+npm run deploy
+```
+
+The Worker name `10tacles-staging` is the same as the old ordering demo, so deploying
+replaces it at the same address. The old demo's D1 database is not deleted; it is just no
+longer used. The old ordering app's code is in git history (commit `abd6283`).
